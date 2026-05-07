@@ -15,8 +15,5 @@ torch                   # inference backend (CPU or CUDA)
 accelerate              # required by transformers device_map=auto
 sentencepiece           # tokeniser for some models (e.g. LLaMA, Phi)
 
-# Anthropic Claude API (answer extraction agent)
-anthropic
-
 # Environment Variables Management
 python-dotenv
