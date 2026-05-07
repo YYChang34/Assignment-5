@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.db
+venv/
+.venv/
+.DS_Store
+~$*.docx
+hf_model_cache/
