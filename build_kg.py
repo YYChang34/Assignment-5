@@ -1,11 +1,3 @@
-"""
-Build Knowledge Graph in Neo4j from SQLite database created by setup_data.py.
-
-Schema:
-  (:Regulation {reg_id, name, category})
-  (:Rule {art_id, article_number, content, source, reg_id})
-  (:Regulation)-[:HAS_RULE]->(:Rule)
-"""
 from __future__ import annotations
 
 import os

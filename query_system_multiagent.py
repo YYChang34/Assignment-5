@@ -30,10 +30,8 @@ def answer_question(question: str) -> dict[str, Any]:
     answer_extraction = PIPELINE["answer_extraction"]
     explanation_agent = PIPELINE["explanation"]
 
-    # Stage 1: NL Understanding
     intent = nlu.run(question)
 
-    # Stage 2: Security check
     security = security_agent.run(question, intent)
     if security["decision"] == "REJECT":
         diagnosis = {"label": "QUERY_ERROR", "reason": "Blocked by security policy."}
@@ -47,16 +45,12 @@ def answer_question(question: str) -> dict[str, Any]:
             "explanation": explanation,
         }
 
-    # Stage 3: Query planning
     plan = planner.run(intent)
 
-    # Stage 4: Query execution
     execution = executor.run(plan)
 
-    # Stage 5: Diagnosis
     diagnosis = diagnosis_agent.run(execution)
 
-    # Stage 6: Conditional repair (max 1 round)
     repair_attempted = False
     repair_changed = False
     if diagnosis["label"] in {"QUERY_ERROR", "SCHEMA_MISMATCH", "NO_DATA"}:
@@ -66,7 +60,6 @@ def answer_question(question: str) -> dict[str, Any]:
         execution = executor.run(repaired_plan)
         diagnosis = diagnosis_agent.run(execution)
 
-    # Stage 7: Answer generation
     rows = execution.get("rows", [])
     if diagnosis["label"] == "SUCCESS":
         answer = answer_extraction.run(question, rows, intent.aspect)
@@ -75,7 +68,6 @@ def answer_question(question: str) -> dict[str, Any]:
     else:
         answer = "Query could not be resolved after repair attempt."
 
-    # Stage 8: Explanation
     explanation = explanation_agent.run(question, intent, security, diagnosis, rows, repair_attempted)
 
     return {

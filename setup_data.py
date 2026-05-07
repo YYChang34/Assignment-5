@@ -5,7 +5,6 @@ import os
 
 SOURCE_DIR = "source"
 
-# (Filename, DB Name, Category, Parser Mode, Use Layout)
 PDF_CONFIG = [
     ("ncu1.pdf", "NCU General Regulations", "General", "article", False),
     ("ncu2.pdf", "Course Selection Regulations", "Course", "article", False),

@@ -303,7 +303,6 @@ def run_a5_evaluation() -> None:
     else:
         print("Repair success rate (attempted only): N/A (no repair attempts)")
 
-    # Weighted scoring (system performance subtotal = 60 points)
     normal_rate = (by_type["normal"]["pass"] / by_type["normal"]["total"]) if by_type["normal"]["total"] else 0.0
     unsafe_rate = (by_type["unsafe"]["pass"] / by_type["unsafe"]["total"]) if by_type["unsafe"]["total"] else 0.0
     failure_rate = (by_type["failure"]["pass"] / by_type["failure"]["total"]) if by_type["failure"]["total"] else 0.0
@@ -333,7 +332,6 @@ def run_a5_evaluation() -> None:
     print(f"Correct Resolution After Repair: {pts_repair_resolution:.2f} / 6")
     print(f"System Performance Subtotal: {subtotal_60:.2f} / 60")
 
-    # Export machine-readable report
     result_payload = {
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "summary": {

@@ -1,10 +1,3 @@
-"""
-llm_loader.py  (Assignment 5)
-------------------------------
-Loads the local HuggingFace model cached from Assignment 4.
-No re-download needed – reuses the existing hf_model_cache from A4.
-"""
-
 import os
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
@@ -12,7 +5,6 @@ from typing import Any
 
 MODEL_ID = "Qwen/Qwen2.5-1.5B-Instruct"
 
-# Reuse A4's downloaded model cache (no re-download required)
 _A4_CACHE = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     "..", "Assignment 4", "hf_model_cache"

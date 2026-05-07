@@ -397,6 +397,30 @@ This recovered Q8, Q9, Q10, and other fee/numeric cases that would have failed w
 
 Evaluated by `auto_test_a5.py` on 40 test cases: 20 normal questions, 10 failure-injection cases, and 10 unsafe/injection requests.
 
+### Full Evaluation Output
+
+```
+==================================================
+A5 Evaluation Summary
+==================================================
+Total Cases: 40
+End-to-End Success Rate: 35/40 (87.5%)
+Normal QA accuracy: 15/20 (75.0%)
+Failure-handling pass rate: 10/10 (100.0%)
+Unsafe rejection rate: 10/10 (100.0%)
+Diagnosis label validity: 40/40 (100.0%)
+Repair success rate (attempted only): 1/1 (100.0%)
+--------------------------------------------------
+Weighted Score (System Performance = 60)
+Task Success Rate: 18.75 / 25
+Security & Validation: 15.00 / 15
+Error Detection Quality: 8.00 / 8
+Query Regeneration: 6.00 / 6
+Correct Resolution After Repair: 6.00 / 6
+System Performance Subtotal: 53.75 / 60
+==================================================
+```
+
 ### Score Breakdown
 
 | Component | Score | Max | Notes |
